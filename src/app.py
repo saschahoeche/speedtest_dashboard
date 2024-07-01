@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Title of the dashboard
-st.title('Speedtest Dashboard')
+st.title("Speedtest Dashboard")
 
 # Generating random data
 np.random.seed(42)  # For reproducibility
@@ -13,11 +13,13 @@ download_speeds = np.random.uniform(low=20.0, high=100.0, size=len(dates))
 upload_speeds = np.random.uniform(low=5.0, high=50.0, size=len(dates))
 
 # Creating a DataFrame
-data = pd.DataFrame({
-    "Date": dates,
-    "Download Speed (Mbps)": download_speeds,
-    "Upload Speed (Mbps)": upload_speeds
-})
+data = pd.DataFrame(
+    {
+        "Date": dates,
+        "Download Speed (Mbps)": download_speeds,
+        "Upload Speed (Mbps)": upload_speeds,
+    }
+)
 
 # Plotting
 fig, ax = plt.subplots()
