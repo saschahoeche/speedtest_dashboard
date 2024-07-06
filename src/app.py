@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.express as px
 
 # Title of the dashboard
 st.title("Speedtest Dashboard")
@@ -21,14 +21,10 @@ data = pd.DataFrame(
     }
 )
 
-# Plotting
-fig, ax = plt.subplots()
-ax.plot(data["Date"], data["Download Speed (Mbps)"], label="Download Speed")
-ax.plot(data["Date"], data["Upload Speed (Mbps)"], label="Upload Speed")
-ax.set_xlabel("Date")
-ax.set_ylabel("Speed (Mbps)")
-ax.legend()
-ax.set_title("Internet Speed Over Time")
+# Plotting with Plotly
+fig = px.line(data, x="Date", y=["Download Speed (Mbps)", "Upload Speed (Mbps)"],
+              labels={"value": "Speed (Mbps)", "variable": "Type"},
+              title="Internet Speed Over Time")
 
 # Displaying the plot
-st.pyplot(fig)
+st.plotly_chart(fig)
